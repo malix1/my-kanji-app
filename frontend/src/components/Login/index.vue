@@ -1,5 +1,6 @@
 <template>
-  <div class="form">
+  <a-card class="form">
+  <img slot="cover" alt="logo" src="https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/01/vue-eyecatch-960x504.jpeg" />
     <a-form :form="form" @submit="handleSubmit">
       <a-form-item>
         <a-input
@@ -36,8 +37,9 @@
           Login
         </a-button>
       </a-form-item>
+      Do not you have an account ? <a>Register</a>
     </a-form>
-  </div>
+  </a-card>
 </template>
 
 <script>
@@ -64,7 +66,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .form {
-  margin: 10% auto;
-  width: 35%;
+  margin: 4% auto;
+  width: 25%;
 }
 </style>
