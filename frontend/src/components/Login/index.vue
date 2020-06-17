@@ -1,12 +1,16 @@
 <template>
   <a-card class="form">
-  <img slot="cover" alt="logo" src="https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/01/vue-eyecatch-960x504.jpeg" />
-    <a-form :form="form" @submit="handleSubmit">
+    <img
+      slot="cover"
+      alt="logo"
+      src="https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/01/vue-eyecatch-960x504.jpeg"
+    />
+    <a-form :form="form" @submit="loginUser">
       <a-form-item>
         <a-input
           placeholder="Email"
           v-decorator="[
-            'Email',
+            'email',
             {
               rules: [
                 { required: true, message: '' },
@@ -23,7 +27,7 @@
           type="password"
           placeholder="Password"
           v-decorator="[
-            'Password',
+            'password',
             {
               rules: [{ required: true, message: '' }],
             },
@@ -37,7 +41,7 @@
           Login
         </a-button>
       </a-form-item>
-      Do not you have an account ? <a>Register</a>
+      Do not you have an account ? <a href="register">Register</a>
     </a-form>
   </a-card>
 </template>
@@ -51,11 +55,11 @@ export default {
     };
   },
   methods: {
-    handleSubmit(e) {
+    loginUser(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          this.$store.commit("loginUser", values)
         }
       });
     },
