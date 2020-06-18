@@ -10,7 +10,7 @@
         <a-input
           placeholder="Email"
           v-decorator="[
-            'Email',
+            'email',
             {
               rules: [
                 { required: true, message: '' },
@@ -36,12 +36,12 @@
           <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.55)" />
         </a-input>
       </a-form-item>
-       <a-form-item>
+      <a-form-item>
         <a-input
           type="password"
           placeholder="Password"
           v-decorator="[
-            'confPassword',
+            'password2',
             {
               rules: [{ required: true, message: 'You must fill this field' }],
             },
@@ -56,23 +56,37 @@
         </a-button>
       </a-form-item>
     </a-form>
+    <div class="error-label" :key="error" v-for="error in errors">{{ error }}</div>
   </a-card>
 </template>
 
 <script>
+import { createUser } from "../../api/userService";
 export default {
   name: "Register",
-  data() {
+  data: function() {
     return {
       form: this.$form.createForm(this, { name: "coordinated" }),
+      errors: [],
+      response: "",
     };
   },
   methods: {
     handleSubmit(e) {
       e.preventDefault();
-      this.form.validateFields((err, values) => {
+      this.form.validateFields(async (err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          const { password, password2 } = values;
+          if (password !== password2) {
+            this.errors = ["Password did not match"];
+          } else {
+            const response = await createUser(values);
+            if (response instanceof Array) {
+              this.errors = response;
+            } else {
+              this.response = response.message;
+            }
+          }
         }
       });
     },
@@ -85,5 +99,9 @@ export default {
 .form {
   margin: 4% auto;
   width: 25%;
+}
+.error-label {
+  color:red;
+  width:100%
 }
 </style>
