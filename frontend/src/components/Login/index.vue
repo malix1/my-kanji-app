@@ -60,6 +60,9 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           this.$store.commit("loginUser", values)
+          if(this.$store.getters.getCurrentUser !== ""){
+            this.$router.push("/")
+          }
         }
       });
     },

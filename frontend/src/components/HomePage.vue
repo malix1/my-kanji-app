@@ -9,7 +9,7 @@ export default {
   name: 'HomePage',
   created: function() {
     const loggedInUser = this.$store.getters.getCurrentUser
-    if(loggedInUser == null){
+    if(loggedInUser == ""){
       this.$router.push("/login")
     }
   }
