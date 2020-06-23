@@ -81,8 +81,8 @@ export default {
             this.errors = ["Password did not match"];
           } else {
             const response = await createUser(values);
-            if (response instanceof Array) {
-              this.errors = response;
+            if (response.status == 400) {
+              this.errors = response.errors;
             } else {
               this.response = response.message;
             }
