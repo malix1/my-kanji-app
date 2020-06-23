@@ -57,11 +57,11 @@ export default {
   methods: {
     loginUser(e) {
       e.preventDefault();
-      this.form.validateFields((err, values) => {
+      this.form.validateFields(async (err, values) => {
         if (!err) {
-          this.$store.commit("loginUser", values)
-          if(this.$store.getters.getCurrentUser !== ""){
-            this.$router.push("/")
+          await this.$store.dispatch("loginUser", values);
+          if (this.$store.getters.getCurrentUser !== "") {
+            this.$router.push("/");
           }
         }
       });
