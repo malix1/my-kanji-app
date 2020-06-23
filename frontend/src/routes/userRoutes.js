@@ -1,5 +1,5 @@
 import VueRouter from "vue-router";
-import HelloWorld from "../components/HelloWorld";
+import HomePage from "../components/HomePage";
 import Login from "../components/Login";
 import Register from "../components/Register";
 
@@ -7,7 +7,7 @@ const userRoutes = new VueRouter({
   routes: [
     {
       path: "/",
-      component: HelloWorld,
+      component: HomePage,
     },
     {
       path: "/login",
