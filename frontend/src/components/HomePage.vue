@@ -7,6 +7,12 @@
 <script>
 export default {
   name: 'HomePage',
+  created: function() {
+    const loggedInUser = this.$store.getters.getCurrentUser
+    if(loggedInUser == null){
+      this.$router.push("/login")
+    }
+  }
 }
 </script>
 
