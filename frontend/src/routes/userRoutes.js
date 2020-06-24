@@ -2,6 +2,7 @@ import VueRouter from "vue-router";
 import HomePage from "../components/HomePage";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import Logout from "../components/Logout";
 
 const userRoutes = new VueRouter({
   routes: [
@@ -17,8 +18,12 @@ const userRoutes = new VueRouter({
       path: "/register",
       component: Register,
     },
+    {
+      path: "/logout",
+      component: Logout,
+    },
   ],
-  mode:"history"
+  mode: "history",
 });
 
-export default userRoutes
+export default userRoutes;

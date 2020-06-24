@@ -1,20 +1,20 @@
 <template>
   <div>
     <Navbar />
-    Home Page
+    You successfuly log out
   </div>
 </template>
 
 <script>
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 
 export default {
-  name: "HomePage",
+  name: "Logout",
   components: {
     Navbar,
   },
   created: function() {
-   
+    // delete user token
   },
 };
 </script>
