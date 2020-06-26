@@ -1,5 +1,5 @@
 export const responseParser = (response) => {
-  if (response.data.status === 200) {
+  if (response.data.status === 200 || response.status === 200) {
     return { status: 200, data: response.data };
   } else if (response.data.status === 400) {
     const errors = errorHandler(response.data);

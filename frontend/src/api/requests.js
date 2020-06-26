@@ -3,7 +3,8 @@ import { responseParser } from "./responseParser";
 
 export const getRequest = async (url, config) => {
   const response = await axios.get(url, config);
-  return response;
+  const parsedResponse = responseParser(response);
+  return parsedResponse;
 };
 
 export const postRequest = async (url, data, config) => {
