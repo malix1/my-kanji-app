@@ -1,4 +1,8 @@
-# hello-world
+This is a project that to practice Vue.js
+
+To get Kanji I used
+https://app.kanjialive.com/search
+
 
 ## Project setup
 ```
