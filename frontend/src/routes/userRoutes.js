@@ -3,6 +3,7 @@ import HomePage from "../components/HomePage";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Logout from "../components/Logout";
+import Kanji from "../components/Kanji";
 
 const userRoutes = new VueRouter({
   routes: [
@@ -21,6 +22,10 @@ const userRoutes = new VueRouter({
     {
       path: "/logout",
       component: Logout,
+    },
+    {
+      path: "/kanji/:detailedKanji",
+      component: Kanji,
     },
   ],
   mode: "history",
